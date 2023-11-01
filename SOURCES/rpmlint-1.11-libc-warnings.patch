@@ -1,0 +1,16 @@
+diff -up rpmlint-rpmlint-1.11/BinariesCheck.py.libcwarn rpmlint-rpmlint-1.11/BinariesCheck.py
+--- rpmlint-rpmlint-1.11/BinariesCheck.py.libcwarn	2020-06-16 10:51:01.531299081 -0400
++++ rpmlint-rpmlint-1.11/BinariesCheck.py	2020-06-16 10:51:18.978910827 -0400
+@@ -557,10 +557,10 @@ class BinariesCheck(AbstractCheck.Abstra
+ 
+                     if not found_libc:
+                         if is_shobj:
+-                            printError(pkg, 'library-not-linked-against-libc',
++                            printWarning(pkg, 'library-not-linked-against-libc',
+                                        fname)
+                         else:
+-                            printError(pkg, 'program-not-linked-against-libc',
++                            printWarning(pkg, 'program-not-linked-against-libc',
+                                        fname)
+ 
+             if bin_info.stack:

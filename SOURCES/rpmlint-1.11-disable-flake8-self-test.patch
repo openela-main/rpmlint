@@ -1,0 +1,23 @@
+diff -up rpmlint-rpmlint-1.11/test.sh.orig rpmlint-rpmlint-1.11/test.sh
+--- rpmlint-rpmlint-1.11/test.sh.orig	2022-01-12 17:23:52.565790275 +0100
++++ rpmlint-rpmlint-1.11/test.sh	2022-01-12 17:24:02.043920708 +0100
+@@ -2,7 +2,7 @@
+ 
+ export PYTHONPATH=$(pwd)/tools:$(pwd)
+ export TESTPATH="$(pwd)/test/"
+-: ${PYTHON:=python} ${PYTEST:=py.test} ${FLAKE8:=flake8}
++: ${PYTHON:=python} ${PYTEST:=py.test}
+ : ${PYTHONWARNINGS:=all}
+ export PYTHONWARNINGS
+ 
+@@ -40,10 +40,6 @@ $PYTEST -v || exit $?
+ 
+ unset PYTHONWARNINGS
+ 
+-echo "$FLAKE8 tests"
+-$FLAKE8 --version
+-$FLAKE8 . ./rpmdiff ./rpmlint || exit $?
+-
+ echo "man page tests"
+ if man --help 2>&1 | grep -q -- --warnings; then
+     tmpfile=$(mktemp) || exit 1
