@@ -1,0 +1,30 @@
+diff -up rpmlint-rpmlint-1.10/Pkg.py.rpm_surrogate_escaped_utf8 rpmlint-rpmlint-1.10/Pkg.py
+--- rpmlint-rpmlint-1.10/Pkg.py.rpm_surrogate_escaped_utf8	2019-06-13 12:17:33.339937352 +0200
++++ rpmlint-rpmlint-1.10/Pkg.py	2019-06-13 13:37:37.076702548 +0200
+@@ -164,12 +164,20 @@ def is_utf8(fname):
+ 
+ 
+ def is_utf8_bytestr(s):
+-    try:
+-        s.decode('UTF-8')
+-    except UnicodeError:
+-        return False
+-    return True
+-
++    if isinstance(s, str):
++        try:
++            s.encode("utf8")
++        except UnicodeEncodeError:
++            return False
++        else:
++            return True
++    else:
++        try:
++            s.decode('UTF-8')
++        except UnicodeError:
++            return False
++        else:
++            return True
+ 
+ def to_unicode(string):
+     if string is None:

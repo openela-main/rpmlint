@@ -1,0 +1,20 @@
+diff -up rpmlint-rpmlint-1.10/config.orig rpmlint-rpmlint-1.10/config
+--- rpmlint-rpmlint-1.10/config.orig	2017-09-05 08:40:05.000000000 +0200
++++ rpmlint-rpmlint-1.10/config	2020-06-04 15:43:14.135492613 +0200
+@@ -230,7 +230,7 @@ from Config import *
+ #'''This application package calls a function to explicitly set crypto ciphers
+ #for SSL/TLS. That may cause the application not to use the system-wide set
+ #cryptographic policy and should be modified in accordance to:
+-#https://fedoraproject.org/wiki/Packaging:CryptoPolicies'''
++#https://docs.fedoraproject.org/en-US/packaging-guidelines/CryptoPolicies/'''
+ #
+ #call_blacklist = {'crypto-policy-non-compliance-openssl' :
+ #                                     {'f_name' : 'SSL_CTX_set_cipher_list',
+@@ -242,6 +242,7 @@ from Config import *
+ #                                       'description' : bad_crypto_warning},
+ #                  'crypto-policy-non-compliance-gnutls-2' :
+ #                                      {'f_name' : 'gnutls_priority_init',
++#                                       'good_param' : '^@SYSTEM$',
+ #                                       'description' : bad_crypto_warning}
+ #                 }
+ #setOption("WarnOnFunction", call_blacklist)
