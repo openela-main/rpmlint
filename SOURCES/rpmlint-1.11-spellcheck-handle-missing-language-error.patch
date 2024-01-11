@@ -1,0 +1,13 @@
+diff -up rpmlint-rpmlint-1.11/TagsCheck.py.orig rpmlint-rpmlint-1.11/TagsCheck.py
+--- rpmlint-rpmlint-1.11/TagsCheck.py.orig	2022-01-11 16:49:18.424026182 +0100
++++ rpmlint-rpmlint-1.11/TagsCheck.py	2022-01-11 16:50:05.774665734 +0100
+@@ -463,7 +463,8 @@ def spell_check(pkg, str, fmt, lang, ign
+                     lang, filters=[enchant.tokenize.EmailFilter,
+                                    enchant.tokenize.URLFilter,
+                                    enchant.tokenize.WikiWordFilter])
+-            except enchant.DictNotFoundError:
++            except (enchant.errors.DefaultLanguageNotFoundError,
++                    enchant.DictNotFoundError):
+                 printInfo(pkg, 'enchant-dictionary-not-found', lang)
+                 pass
+             _enchant_checkers[lang] = checker
